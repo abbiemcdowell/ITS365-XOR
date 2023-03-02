@@ -15,10 +15,11 @@ async function load() {
 function predict(model) {
     const numberOne = document.getElementById('numberOne').value;
     const numberTwo = document.getElementById('numberTwo').value;
-    const inputTensor = tf.tensor([parseInt(numberOne, numberTwo)]);
+    const inputTensor1 = tf.tensor([parseInt(numberOne)]);
+    const inputTensor2 = tf.tensor([parseInt(numberTwo)]);
     
     model.then(model => {
-        let result = model.predict(inputTensor);
+        let result = model.predict(inputTensor1, inputTensor2);
         result = result.round().dataSync()[0];
         alert(result ? "1" : "0");
         
@@ -34,12 +35,12 @@ const model = load();
 <h3>  XOR Problem  </h3>
 
 <select id="numberOne">
-    <option value=0>0</option>
-    <option value=1>1</option>
+    <option value='0'>0</option>
+    <option value='1'>1</option>
 </select>
 <select id="numberTwo">
-    <option value=0>0</option>
-    <option value=1>1</option>
+    <option value='0'>0</option>
+    <option value='1'>1</option>
 </select>
 
 <button onclick="predict(model)">Predict</button>
