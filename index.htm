@@ -34,14 +34,14 @@ const model = load();
 <body>
 <h3>  XOR Problem  </h3>
 
-<select id="numberOne">
-    <option value='0'>0</option>
-    <option value='1'>1</option>
-</select>
-<select id="numberTwo">
-    <option value='0'>0</option>
-    <option value='1'>1</option>
-</select>
+<input id = "numberOne" type="text" list="numbers" />
+<input id = "numberTwo" type="text" list="numbers" />
+<datalist id="numbers>
+     <option value="0"></option>
+     <option value="1"></option>
+</datalist>
+
+<input id = "numberTwo" type="text" list="numbers" />
 
 <button onclick="predict(model)">Predict</button>
 
