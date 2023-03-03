@@ -18,12 +18,17 @@ function predict(model) {
     const inputTensor1 = tf.tensor([parseInt(numberOne)]);
     const inputTensor2 = tf.tensor([parseInt(numberTwo)]);
     
-    model.then(model => {
-        let result = model.predict(inputTensor1, inputTensor2);
-        result = result.round().dataSync()[0];
-        alert(result ? "1" : "0");
+    function display(){
+         alert("Number one: " + numberOne ", Number Two: " + numberTwo + ", inputTensor1: " + inputTensor1 + ", inputTensor2: " + inputTensor2);
+    }
+    
+    
+    //model.then(model => {
+    //    let result = model.predict(inputTensor1, inputTensor2);
+    //    result = result.round().dataSync()[0];
+    //    alert(result ? "1" : "0");
         
-    });
+    //});
 };
 
 const model = load();
@@ -37,13 +42,12 @@ const model = load();
 <input id = "numberOne" type="text" list="numbers" />
 <input id = "numberTwo" type="text" list="numbers" />
 <datalist id="numbers>
-     <option value="0"></option>
-     <option value="1"></option>
+     <option value="1">+</option>
+     <option value="-1">-</option>
 </datalist>
 
-<input id = "numberTwo" type="text" list="numbers" />
-
 <button onclick="predict(model)">Predict</button>
+<button onclick="display()">Display</button>
 
 </body>
 
