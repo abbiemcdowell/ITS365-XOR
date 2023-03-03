@@ -15,20 +15,14 @@ async function load() {
 function predict(model) {
     const numberOne = document.getElementById('numberOne').value;
     const numberTwo = document.getElementById('numberTwo').value;
-    const inputTensor1 = tf.tensor([parseInt(numberOne)]);
-    const inputTensor2 = tf.tensor([parseInt(numberTwo)]);
+    const inputTensor = tf.tensor([parseInt(numberOne), parseInt(numberTwo]);
     
-    function display(){
-         alert("Number one: " + numberOne ", Number Two: " + numberTwo + ", inputTensor1: " + inputTensor1 + ", inputTensor2: " + inputTensor2);
-    }
-    
-    
-    //model.then(model => {
-    //    let result = model.predict(inputTensor1, inputTensor2);
-    //    result = result.round().dataSync()[0];
-    //    alert(result ? "1" : "0");
+    model.then(model => {
+        let result = model.predict(inputTensor);
+        result = result.round().dataSync()[0];
+        alert(result ? "1" : "0");
         
-    //});
+    });
 };
 
 const model = load();
@@ -39,15 +33,23 @@ const model = load();
 <body>
 <h3>  XOR Problem  </h3>
 
-<input id = "numberOne" type="text" list="numbers" />
-<input id = "numberTwo" type="text" list="numbers" />
-<datalist id="numbers>
-     <option value="1">+</option>
-     <option value="-1">-</option>
+<h4>X value</h4>
+<input id = "numberOne" type="text" list="numbersX" />
+<datalist id="numbersX">
+    <option value="1">Positive x</option>
+    <option value="-1">Negative x</option>
+</datalist>
+<br>
+
+<h4>Y value</h4>
+<input id = "numberTwo" type="text" list="numbersY" />
+<datalist id="numbersY">
+    <option value="1">Positive y</option>
+    <option value="-1">Negative y</option>
 </datalist>
 
-<button onclick="predict(model)">Predict</button>
-<button onclick="display()">Display</button>
+<br><br>
+<button onclick="predict()">Predict</button>
 
 </body>
 
