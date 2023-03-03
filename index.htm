@@ -15,7 +15,7 @@ async function load() {
 function predict(model) {
     const numberOne = document.getElementById('numberOne').value;
     const numberTwo = document.getElementById('numberTwo').value;
-    const inputTensor = tf.tensor([parseInt(numberOne), parseInt(numberTwo]);
+    const inputTensor = tf.tensor([parseInt(numberOne), parseInt(numberTwo)]);
     
     model.then(model => {
         let result = model.predict(inputTensor);
